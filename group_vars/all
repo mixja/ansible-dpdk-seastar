@@ -1,0 +1,7 @@
+---
+dpdk_dir: /root/dpdk
+dpdk_build: '{{ dpdk_dir }}/x86_64-native-linuxapp-gcc'
+dpdk_repo: https://github.com/mixja/dpdk.git
+
+seastar_dir: /root/seastar
+seastar_repo: https://github.com/cloudius-systems/seastar.git
