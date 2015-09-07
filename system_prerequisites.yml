@@ -1,0 +1,29 @@
+- name: Install System Prerequisities
+  hosts: all
+  tasks:
+    - name: Apply system updates
+      dnf: name=* state=latest
+      register: reboot_required
+    - name: Install application prerequisites
+      dnf: name='{{ item }}'
+      with_items:
+        - git
+        - kernel-devel 
+        - gcc-c++
+        - libaio-devel
+        - ninja-build
+        - ragel
+        - hwloc-devel
+        - numactl-devel
+        - libpciaccess-devel
+        - cryptopp-devel
+        - xen-devel
+        - boost-devel
+        - libxml2-devel
+        - libubsan
+        - libasan
+    - name: Disable firewalld
+      service: >
+        name=firewalld
+        enabled=no
+        state=stopped

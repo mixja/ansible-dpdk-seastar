@@ -1,0 +1,14 @@
+---
+- name: Restart Machine (if required)
+  hosts: all
+  tasks:
+    - name: Restart machine
+      raw: 'sleep 5 && reboot "Ansible rebooting system" &'
+      async: 0
+      poll: 0
+      ignore_errors: true
+      when: reboot_required.changed
+    - name: Waiting for machine to restart
+      local_action: wait_for host='{{ inventory_hostname }}' port=22 delay=10
+      sudo: false
+      when: reboot_required.changed

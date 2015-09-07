@@ -1,0 +1,21 @@
+---
+- name: Install Seastar
+  hosts: all
+  tasks:
+    - name: Checkout Seastar 
+      git: >
+        repo={{ seastar_repo }}
+        dest={{ seastar_dir }}
+        clone=no
+        force=yes
+        version={{ seastar_version | default("master") }}
+      register: seastar_changed
+    - name: Check if Seastar configuration exists
+      stat: path={{ seastar_dir }}/build.ninja
+      register: seastar_config_status
+    - name: Configure Seastar
+      command: ./configure.py --dpdk-target {{ dpdk_build }} --disable-xen --with apps/httpd/httpd chdir={{ seastar_dir }}
+      when: seastar_config_status.stat.exists == false or (seastar_rebuild is defined) or seastar_changed.changed
+    - name: Build Seastar
+      command: '/usr/bin/ninja-build -f {{ seastar_dir }}/build.ninja chdir={{ seastar_dir }}'
+      when: seastar_config_status.stat.exists == false or (seastar_rebuild is defined) or seastar_changed.changed
