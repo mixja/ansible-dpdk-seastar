@@ -9,7 +9,7 @@ Ensure that you have [installed Ansible](http://docs.ansible.com/ansible/intro_i
 
 To run the playbook against a host 192.168.1.100 (note the comma following the host name/IP address must be included):
 
-```console 
+```bash 
 $ git clone https://github.com/mixja/ansible-dpdk-seastar.git 
 ...
 ...
@@ -39,13 +39,13 @@ The following variables can be used to force a rebuild or build a different vers
 
 The following example forces DPDK to be built:
 
-```console
+```bash
 $ ansible-playbook -i "192.168.1.100," site.yml --extra-vars "dpdk_rebuild=true"
 ```
 
 The following example checks out Seastar commit 696ab29 to be checked out and forces a build of Seastar:
 
-```console
+```bash
 $ ansible-playbook -i "192.168.1.100," site.yml --extra-vars "seastar_rebuild=true seastar_version=696ab29"
 ``` 
 
