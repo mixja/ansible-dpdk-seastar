@@ -7,6 +7,8 @@ See my blog post on [DPDK on an Intel NUC](http://pseudo.co.de/dpdk-on-an-intel-
 ## Quick Start
 Ensure that you have [installed Ansible](http://docs.ansible.com/ansible/intro_installation.html) on the host where you want to run the playbook from.
 
+This playbook has been tested against Fedora 22.
+
 To run the playbook against a host 192.168.1.100 (note the comma following the host name/IP address must be included):
 
 ```bash 
@@ -38,7 +40,7 @@ The following variables can be used to force a rebuild or build a different vers
 
 - `seastar_rebuild` - if set to any value, forces Seastar to be built.
 - `seastar_version` - specifies the branch, tag or commit hash to build.  If a change is detected from the current repo, Seastar will be rebuilt.
-- `dpdk_rebuild` - if set to any value, forces DPDK to be built/
+- `dpdk_rebuild` - if set to any value, forces DPDK to be built.
 
 The following example forces DPDK to be built:
 

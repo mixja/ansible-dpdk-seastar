@@ -6,7 +6,7 @@
       git: >
         repo={{ seastar_repo }}
         dest={{ seastar_dir }}
-        clone=no
+        update=no
         force=yes
         version={{ seastar_version | default("master") }}
       register: seastar_changed
