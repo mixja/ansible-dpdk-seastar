@@ -6,8 +6,6 @@
       git: >
         repo={{ seastar_repo }}
         dest={{ seastar_dir }}
-        update=no
-        force=yes
         version={{ seastar_version | default("master") }}
       register: seastar_changed
     - name: Check if Seastar configuration exists
