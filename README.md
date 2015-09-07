@@ -15,6 +15,9 @@ $ git clone https://github.com/mixja/ansible-dpdk-seastar.git
 ...
 $ cd ansible-dpdk-seastar
 ansible-dpdk-seastar$ ansible-playbook -i "192.168.1.100," site.yml
+SSH password: *******
+
+PLAY [Provision Custom Facts] *************************************************
 ...
 ...
 ```
