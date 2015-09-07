@@ -14,7 +14,7 @@ $ git clone https://github.com/mixja/ansible-dpdk-seastar.git
 ...
 ...
 $ cd ansible-dpdk-seastar
-ansible-dpdk-seastar$ ansible-playbook -i "192.168.1.100," site.yml
+ansible-dpdk-seastar $ ansible-playbook -i "192.168.1.100," site.yml
 ...
 ...
 ```
@@ -33,9 +33,9 @@ The `group_vars/all` file contains the following variables:
 
 The following variables can be used to force a rebuild or build a different version:
 
-- `seastar_rebuild` - if set to any value, forces Seastar to be built
+- `seastar_rebuild` - if set to any value, forces Seastar to be built.
 - `seastar_version` - specifies the branch, tag or commit hash to build.  If a change is detected from the current repo, Seastar will be rebuilt.
-- `dpdk_rebuild` - if set to any value, forces DPDK to be built
+- `dpdk_rebuild` - if set to any value, forces DPDK to be built/
 
 The following example forces DPDK to be built:
 
