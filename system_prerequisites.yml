@@ -1,9 +1,14 @@
+---
 - name: Install System Prerequisities
   hosts: all
+  handlers:
+    - include: handlers/restart.yml
   tasks:
     - name: Apply system updates
       dnf: name=* state=latest
-      register: reboot_required
+      notify: 
+        - restart machine
+        - wait for machine to restart
     - name: Install application prerequisites
       dnf: name='{{ item }}'
       with_items:
@@ -27,3 +32,11 @@
         name=firewalld
         enabled=no
         state=stopped
+    - name: Disable SELINUX
+      lineinfile: >
+        dest=/etc/selinux/config
+        regexp=^SELINUX=
+        line=SELINUX=disabled
+      notify: 
+        - restart machine
+        - wait for machine to restart
